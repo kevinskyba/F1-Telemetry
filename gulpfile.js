@@ -14,7 +14,7 @@ function buildFrontend() {
 }
 function copyFrontendToBackend() {
     return src(frontendDst)
-        .pipe(clean({read: false}))
+        .pipe(clean({read: false, allowEmpty: true}))
         .pipe(src(frontendSrc))
         .pipe(gulpCopy("backend/dist/public", { prefix: 2 }));
 }
