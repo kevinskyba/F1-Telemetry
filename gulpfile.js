@@ -13,8 +13,8 @@ function buildFrontend() {
     return run("cd frontend && npm run build").exec();
 }
 function copyFrontendToBackend() {
-    return src(frontendDst)
-        .pipe(clean({read: false, allowEmpty: true}))
+    return src(frontendDst, {allowEmpty: true})
+        .pipe(clean({read: false}))
         .pipe(src(frontendSrc))
         .pipe(gulpCopy("backend/dist/public", { prefix: 2 }));
 }
