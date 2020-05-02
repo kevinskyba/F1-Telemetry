@@ -1,0 +1,42 @@
+{
+  "name": "f1-telemetry",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node -r source-map-support/register dist/runner.js",
+    "tsc": "tsc",
+    "updateModels": "npm i file:../models --save"
+  },
+  "dependencies": {
+    "args": "^5.0.1",
+    "bristol": "^0.4.0",
+    "f1-telemetry-client": "^0.1.16",
+    "f1-telemetry-models": "file:../models",
+    "i18n-ts": "^1.0.5",
+    "koa": "^2.5.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-mount": "^4.0.0",
+    "koa-route": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "koa-websocket": "^6.0.0",
+    "lodash": "^4.17.11",
+    "palin": "^2.2.0",
+    "reflect-metadata": "^0.1.12",
+    "source-map-support": "^0.5.13",
+    "yenv": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/args": "^3.0.0",
+    "@types/binary-parser": "^1.5.0",
+    "@types/koa": "^2.0.46",
+    "@types/koa-bodyparser": "^5.0.1",
+    "@types/koa-route": "^3.2.4",
+    "@types/koa-router": "^7.0.31",
+    "@types/koa-websocket": "^5.0.4",
+    "@types/lodash": "^4.14.116",
+    "@types/node": "^10.5.8",
+    "typescript": "^3.0.1",
+    "typescript-ioc": "^1.2.4"
+  }
+}
