@@ -15,7 +15,9 @@
       "node_modules/bristol/src/**/*.js",
       "node_modules/typescript-ioc/*.js"
     ],
-    "assets": []
+    "assets": [
+      "dist/public/**/*"
+    ]
   },
   "dependencies": {
     "args": "^5.0.1",

@@ -10,6 +10,7 @@ import {WriteStream} from "fs";
 import CarTelemetry from "f1-telemetry-models/dist/model/car-telemetry";
 import {ReplayDataBackend} from "./data-backend/replay/data-backend";
 const fs = require('fs');
+const path = require('path');
 
 interface WebSocketExt extends WebSocket {
     subscriptions: any;
@@ -48,7 +49,7 @@ export class Server implements DataBackendListener{
             this.dataService.addListener(this);
 
             this.app = new Application();
-            this.app.use(koastatic("public"));
+            this.app.use(koastatic(path.join(__dirname, "public")));
             this.app.listen(env.SERVER_PORT);
             Logger.info(`Server started and listening on port ${env.SERVER_PORT}`);
 
