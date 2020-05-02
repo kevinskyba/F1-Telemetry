@@ -24,5 +24,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: cd models
-    - run: npm ci
+    - name: build models
+      run: |
+        cd models
+        npm ci
+        tsc
