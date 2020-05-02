@@ -17,8 +17,6 @@ console.log = function(str: string) {
     if (_logging_enabled) _original_log(str);
 };
 
-
-
 logger._processStack = function(stack: any, bristolFileName: any) {
     let lastIndex = stack.length - 1;
     for (; lastIndex >= 0; lastIndex--) {

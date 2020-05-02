@@ -1,5 +1,5 @@
 import Application = require("koa");
-import route = require("koa-route");
+import koastatic = require("koa-static");
 import WebSocket = require('ws');
 import {env} from "./env";
 import {Logger} from "./logger";
@@ -48,6 +48,7 @@ export class Server implements DataBackendListener{
             this.dataService.addListener(this);
 
             this.app = new Application();
+            this.app.use(koastatic("public"));
             this.app.listen(env.SERVER_PORT);
             Logger.info(`Server started and listening on port ${env.SERVER_PORT}`);
 

@@ -2,10 +2,20 @@
   "name": "f1-telemetry",
   "version": "0.0.0",
   "private": true,
+  "bin": "dist/runner.js",
   "scripts": {
     "start": "node -r source-map-support/register dist/runner.js",
     "tsc": "tsc",
+    "tscWatch": "tsc --watch",
     "updateModels": "npm i file:../models --save"
+  },
+  "pkg": {
+    "scripts": [
+      "dist/**/*.js",
+      "node_modules/bristol/src/**/*.js",
+      "node_modules/typescript-ioc/*.js"
+    ],
+    "assets": []
   },
   "dependencies": {
     "args": "^5.0.1",
@@ -23,8 +33,7 @@
     "lodash": "^4.17.11",
     "palin": "^2.2.0",
     "reflect-metadata": "^0.1.12",
-    "source-map-support": "^0.5.13",
-    "yenv": "^2.1.0"
+    "source-map-support": "^0.5.13"
   },
   "devDependencies": {
     "@types/args": "^3.0.0",
@@ -34,6 +43,7 @@
     "@types/koa-route": "^3.2.4",
     "@types/koa-router": "^7.0.31",
     "@types/koa-websocket": "^5.0.4",
+    "@types/koa-static": "^4.0.1",
     "@types/lodash": "^4.14.116",
     "@types/node": "^10.5.8",
     "typescript": "^3.0.1",

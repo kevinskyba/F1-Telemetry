@@ -1,0 +1,16 @@
+{
+  "name": "f1-telemetry",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "pkg backend/package.json"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "pkg": "^4.4.8",
+    "gulp": "^4.0.2",
+    "gulp-copy": "^4.0.1",
+    "gulp-run": "^1.7.1",
+    "gulp-clean": "^0.4.0"
+  }
+}

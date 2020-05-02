@@ -1,5 +1,3 @@
-import i18n from "../i18n/i18n";
-
 enum Weather {
     Clear = 0,
     Light_Cloud = 1,
@@ -10,7 +8,7 @@ enum Weather {
 }
 
 namespace Weather {
-    export function toString(weather: Weather): string {
+    export function toString(weather: Weather, i18n: any): string {
         switch (weather) {
             case Weather.Clear: return i18n.WEATHER_CLEAR;
             case Weather.Light_Cloud: return i18n.WEATHER_LIGHT_CLOUD;

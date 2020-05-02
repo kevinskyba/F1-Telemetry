@@ -1,4 +1,3 @@
-import i18n from "../i18n/i18n";
 
 enum SafetyCarStatus {
     No = 0,
@@ -7,7 +6,7 @@ enum SafetyCarStatus {
 }
 
 namespace SafetyCarStatus {
-    export function toString(safetyCarStatus: SafetyCarStatus): string {
+    export function toString(safetyCarStatus: SafetyCarStatus, i18n: any): string {
         switch (safetyCarStatus) {
             case 0: return i18n.NO_SAFETY_CAR_STATUS;
             case 1: return i18n.FULL_SAFETY_CAR_STATUS;
