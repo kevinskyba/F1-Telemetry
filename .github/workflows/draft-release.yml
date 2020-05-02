@@ -59,7 +59,6 @@ jobs:
     - name: add binaries to release
       uses: Roang-zero1/github-upload-release-artifacts-action@master
       with:
-       args:
-        - f1-telemetry-win.exe
+       args: f1-telemetry-win.exe
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
