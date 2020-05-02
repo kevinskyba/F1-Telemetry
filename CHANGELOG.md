@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.0.3
+
+Initial Release
+
 ## v0.0.2
 
 Initial Release
