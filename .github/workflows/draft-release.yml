@@ -33,17 +33,17 @@ jobs:
       run: |
         npm i
         npm ci
-    - name: build models
+    - name: prepare models
       run: |
         cd models
         npm i
         npm ci
-    - name: build backend
+    - name: prepare backend
       run: |
         cd backend
         npm i
         npm ci
-    - name: build frontend
+    - name: prepare frontend
       run: |
         cd frontend
         npm i
@@ -57,6 +57,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         created_tag: ${{ steps.tag_and_prepare_release.outputs.tag }}
+        create_draft: false
+        update_existing: true
     - name: add binaries to release
       uses: Roang-zero1/github-upload-release-artifacts-action@master
       with:
