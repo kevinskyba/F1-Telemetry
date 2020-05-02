@@ -27,13 +27,16 @@ jobs:
     - name: build models
       run: |
         cd models
+        npm i
         npm ci
         tsc
     - name: build backend
       run: |
         cd backend
+        npm i
         npm ci
     - name: build frontend
       run: |
         cd frontend
+        npm i
         npm ci
