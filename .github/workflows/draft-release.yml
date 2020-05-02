@@ -23,6 +23,13 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: tag and prepare release
+        id: tag_and_prepare_release
+        uses: K-Phoen/semver-release-action@master
+        with:
+          release_branch: master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: preparations
       run: |
         npm i
@@ -48,8 +55,9 @@ jobs:
     - name: create release
       uses: Roang-zero1/github-create-release-action@master
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
+        created_tag: ${{ steps.tag_and_prepare_release.outputs.tag }}
         create_draft: true
     - name: add binaries to release
       uses: Roang-zero1/github-upload-release-artifacts-action@master
