@@ -59,10 +59,10 @@ jobs:
         created_tag: ${{ steps.tag_and_prepare_release.outputs.tag }}
         create_draft: false
         update_existing: true
-    - name: add binaries to release
-      uses: Roang-zero1/github-upload-release-artifacts-action@master
-      with:
-        args:
-        - f1-telemetry-win.exe
+    - name: upload artifacts to release
+      uses: fnkr/github-action-ghr@v1
+      if: startsWith(github.ref, 'refs/tags/')
       env:
+        GHR_COMPRESS: zip
+        GHR_PATH: f1-telemetry-win.exe
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
