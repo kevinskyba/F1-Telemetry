@@ -13,10 +13,10 @@
 </template>
 
 <script lang="ts">
-    import {DataMixin} from "../../mixins/DataMixin";
+    import DataMixin from "../../mixins/DataMixin";
 
     export default {
-        mixins: [DataMixin("session"), DataMixin("participants"), DataMixin("lapData")],
+        mixins: [DataMixin],
         name: "Debug"
     }
 </script>

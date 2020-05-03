@@ -60,6 +60,7 @@ export class ReplayDataBackend implements IDataBackend {
             nextWait = dataTime - this._lastCaptureTime;
         }
         this._lastCaptureTime = dataTime;
+        this._captureDataIdx++;
         setTimeout(this._runReplay.bind(this), nextWait);
     }
 

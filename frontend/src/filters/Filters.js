@@ -1,6 +1,6 @@
 import Vue from "vue";
 
-Vue.filter('racingTime', function(value) {
+export default Vue.filter('racingTime', function(value) {
     var pad = function(num, size) { return ('000' + num).slice(size * -1); },
         time = parseFloat(value).toFixed(3),
         minutes = Math.floor(time / 60) % 60,

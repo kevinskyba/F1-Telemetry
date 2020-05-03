@@ -1,14 +1,15 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <GridBoard/>
   </div>
 </template>
 
 <script>
+import GridBoard from "./components/boards/GridBoard";
 export default {
   name: 'App',
   components: {
-
+    GridBoard
   }
 }
 </script>

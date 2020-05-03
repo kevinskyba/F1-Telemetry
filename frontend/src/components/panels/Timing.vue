@@ -29,43 +29,14 @@
 </template>
 
 <script>
-    import {DataMixin} from "@/mixins/DataMixin";
+    import DataMixin from "../../mixins/DataMixin";
 
     export default {
-        mixins: [DataMixin("session"), DataMixin("participants"), DataMixin("lapdata")],
+        mixins: [DataMixin],
         name: "Timing",
         computed: {
             mergedCarData: function() {
-                let merged = [];
-                if (this.participants !== undefined && this.lapdata !== undefined) {
-                    if (this.participants.numActiveCars > 0) {
-                        for (let i = 0; i < this.participants.numActiveCars; i++) {
-                            if (this.participants.participants && this.lapdata.entries)
-                            {
-                                let data = {...this.participants.participants[i], ...this.lapdata.entries[i]};
-                                merged.push(data);
-                            }
-                        }
-                        merged = merged.sort(function(a, b) { return a.carPosition - b.carPosition; });
-
-                        let last = null;
-                        for (let i = 0; i < merged.length; i++) {
-                            let data = merged[i];
-                            if (last != null) {
-                                if (last.currentLapNumber == data.currentLapNumber) {
-                                    data.diff = last.currentLapTime - data.currentLapTime;
-                                } else {
-                                    data.diff = 0;
-                                }
-                            } else {
-                                data.diff = 0;
-                            }
-                            last = data;
-                        }
-                    }
-                }
-                console.log(merged);
-                return merged;
+                return this.telemetryData["cardata"];
             }
         }
     }
