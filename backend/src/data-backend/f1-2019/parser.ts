@@ -7,12 +7,12 @@ import {
     Weather,
     Team,
     LapData,
-    PitStatus, DriverStatus, ResultStatus
+    PitStatus, DriverStatus, ResultStatus,
+    LapDataEntry,
+    CarTelemetry,
+    CarTelemetryEntry,
+    Header
 } from "f1-telemetry-models";
-import LapDataEntry from "f1-telemetry-models/dist/model/lap-data-entry";
-import CarTelemetry from "f1-telemetry-models/dist/model/car-telemetry";
-import CarTelemetryEntry from "f1-telemetry-models/dist/model/car-telemetry-entry";
-
 class Parser {
     static parseSession(data: any): Session {
         let session = new Session();
@@ -26,6 +26,16 @@ class Parser {
         session.sessionTimeLeft = data["m_sessionTimeLeft"];
         session.sessionDuration = data["m_sessionDuration"];
         session.safetyCarStatus = data["m_safetyCarStatus"];
+
+        let header = new Header();
+        header.packetFormat = data["m_header"]["m_packetFormat"];
+        header.gameMajorVersion = data["m_header"]["m_gameMajorVersion"];
+        header.gameMinorVersion = data["m_header"]["m_gameMinorVersion"];
+        header.sessionUID = data["m_header"]["m_sessionUID"];
+        header.playerCarIndex = data["m_header"]["m_playerCardIndex"];
+
+        session.header = header;
+
         return session;
     }
 
