@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="[backend] run replay" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/backend/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="start" />
+    </scripts>
+    <arguments value="-capture true" />
+    <node-interpreter value="project" />
+    <envs>
+      <env name="REPLAY" value="true" />
+      <env name="CAPTURE_PATH" value="./captures/demo.cap" />
+    </envs>
+    <method v="2" />
+  </configuration>
+</component>

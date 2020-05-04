@@ -1,6 +1,7 @@
 
 class DataService {
 
+    _reconnectDelay = 5000;
     socket;
 
     _lastSession;
@@ -12,15 +13,6 @@ class DataService {
     _listener = [];
 
     constructor() {
-        if (process.env.NODE_ENV !== "development") {
-            var url = window.location.href;
-            var urlArr = url.split("/");
-            var host = urlArr[2];
-            this.socket = new WebSocket(`ws://${host}/ws`);
-        } else {
-            this.socket = new WebSocket(`ws://localhost:8091/ws`);
-        }
-
         this._setupWebsocket();
     }
 
@@ -36,6 +28,15 @@ class DataService {
     }
 
     _setupWebsocket() {
+        if (process.env.NODE_ENV !== "development") {
+            var url = window.location.href;
+            var urlArr = url.split("/");
+            var host = urlArr[2];
+            this.socket = new WebSocket(`ws://${host}/ws`);
+        } else {
+            this.socket = new WebSocket(`ws://localhost:8091/ws`);
+        }
+
         this.socket.onopen = () => {
             this.socket.send(JSON.stringify({"type": "subscribe", "topic": "session"}));
             this.socket.send(JSON.stringify({"type": "subscribe", "topic": "participants"}));
@@ -49,6 +50,17 @@ class DataService {
                 case "participants": this._onParticipants(data["data"]); break;
                 case "lapdata": this._onLapData(data["data"]); break;
                 case "cartelemetry": this,this._onCarTelemetry(data["data"]); break;
+            }
+        };
+        this.socket.onclose = (e) => {
+            console.log("WebSocket was closed, will try to reconnect in 5 seconds... ", e.reason);
+            setTimeout(function() {
+                this._setupWebsocket();
+            }.bind(this), this._reconnectDelay);
+        };
+        this.socket.onerror = (err) => {
+            if (err.message !== undefined) {
+                console.log("WebSocket had an error: ", err.message);
             }
         };
     }

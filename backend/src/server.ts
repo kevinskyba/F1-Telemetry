@@ -35,7 +35,9 @@ export class Server implements DataBackendListener{
             this.replay = env.REPLAY;
 
             if (this.capturing) {
-                this.captureStream = fs.createWriteStream(env.CAPTURE_PATH + Date.now().toString() + ".cap", {flags: 'a'});
+                const captureFile = env.CAPTURE_PATH + Date.now().toString() + ".cap";
+                Logger.info("Capture activated, saving to: " + captureFile)
+                this.captureStream = fs.createWriteStream(captureFile, {flags: 'a'});
                 this.captureStart = Date.now();
             }
 

@@ -19,8 +19,10 @@ export default {
 
   body {
     background-color: $background-color;
+    color: $primary-color;
   }
   #app {
     background-color: $background-color;
+    color: $primary-color;
   }
 </style>

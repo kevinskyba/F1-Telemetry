@@ -30,8 +30,21 @@
 
 <script>
     import DataMixin from "../../mixins/DataMixin";
+    import {randomNumber} from "../../Utils";
 
     export default {
+        gridSettings: function() {
+            return {
+                i: randomNumber(),
+                x: 0,
+                y: 0,
+                w: 6,
+                h: 2,
+                minW: 3,
+                minH: 2,
+                c: "Timing"
+            }
+        },
         mixins: [DataMixin],
         name: "Timing",
         computed: {
