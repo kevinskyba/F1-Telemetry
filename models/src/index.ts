@@ -13,5 +13,6 @@ import PitStatus from "./model/pit-status";
 import ResultStatus from "./model/result-status";
 import CarTelemetry from "./model/car-telemetry";
 import CarTelemetryEntry from "./model/car-telemetry-entry";
+import Header from "./model/header";
 
-export { SafetyCarStatus, Session, SessionType, Track, Weather, Participants, Participant, Team, LapData, LapDataEntry, DriverStatus, PitStatus, ResultStatus, CarTelemetry, CarTelemetryEntry };
+export { SafetyCarStatus, Session, SessionType, Track, Weather, Participants, Participant, Team, LapData, LapDataEntry, DriverStatus, PitStatus, ResultStatus, CarTelemetry, CarTelemetryEntry, Header };

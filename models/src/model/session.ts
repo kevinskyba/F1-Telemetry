@@ -2,8 +2,11 @@ import Weather from "./weather";
 import SessionType from "./session-type";
 import Track from "./track";
 import SafetyCarStatus from "./safety-car-status";
+import Header from "./header";
 
 class Session {
+    header: Header;
+
     weather: Weather;
 
     /**
