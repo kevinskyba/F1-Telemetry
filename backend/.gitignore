@@ -158,5 +158,6 @@ data/*
 
 dist
 captures
+!captures/demo.cap
 
 dist/env.yaml
